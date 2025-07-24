@@ -21,10 +21,10 @@ const formatNumberString = (number: string, decimals = 2) => {
   const num = Number(number);
   if (isNaN(num)) return number;
   const rounded = num.toFixed(decimals);
-  const [integer, decimal] = rounded.split(".");
-  const formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const [integer, decimal] = rounded.split('.');
+  const formattedInteger = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return decimal ? `${formattedInteger}.${decimal}` : formattedInteger;
-}
+};
 
 /**
  * Formats raw near-Earth asteroid API data for table display.
@@ -36,13 +36,10 @@ export const formatNearEarthAsteroidsData = (asteroidsData: AsteroidData[]) => {
 
   for (const dateKey in asteroidsData) {
     const asteroidsForDate = asteroidsData[dateKey];
-    // console.log(asteroidsForDate)
 
     if (Array.isArray(asteroidsForDate)) {
       for (const asteroid of asteroidsForDate as AsteroidData[]) {
-        console.log(asteroid);
         const closeApproach = asteroid.close_approach_data?.[0] || {};
-        console.log(closeApproach.close_approach_date_full);
 
         formattedAsteroidsData.push({
           id: asteroid.id,
@@ -53,22 +50,32 @@ export const formatNearEarthAsteroidsData = (asteroidsData: AsteroidData[]) => {
           potentiallyHazardous: formatHazardLvl(
             asteroid.is_potentially_hazardous_asteroid
           ),
-          missDistanceKm: formatNumberString(closeApproach.miss_distance?.kilometers),
+          missDistanceKm: formatNumberString(
+            closeApproach.miss_distance?.kilometers
+          ),
           absoluteMagnitudeH: asteroid.absolute_magnitude_h,
-          relativeVelocityKph:
-            formatNumberString(closeApproach.relative_velocity?.kilometers_per_hour),
-          estimatedDiameterMaxKm:
-            formatNumberString(asteroid.estimated_diameter.kilometers.estimated_diameter_max, 3),
-          estimatedDiameterMinKm:
-            formatNumberString(asteroid.estimated_diameter.kilometers.estimated_diameter_min, 3),
+          relativeVelocityKph: formatNumberString(
+            closeApproach.relative_velocity?.kilometers_per_hour
+          ),
+          estimatedDiameterMaxKm: formatNumberString(
+            asteroid.estimated_diameter.kilometers.estimated_diameter_max,
+            3
+          ),
+          estimatedDiameterMinKm: formatNumberString(
+            asteroid.estimated_diameter.kilometers.estimated_diameter_min,
+            3
+          ),
         });
-
-        // console.log(formattedAsteroidsData)
       }
     }
   }
 
-  // console.log(formattedAsteroidsData)
+  // Sort asteroids by their close approach date (ascending)
+  const asteroidsSortedByDate = formattedAsteroidsData.sort(
+    (a, b) =>
+      dayjs(a.closeApproachDate).valueOf() -
+      dayjs(b.closeApproachDate).valueOf()
+  );
 
-  return formattedAsteroidsData;
+  return asteroidsSortedByDate;
 };
