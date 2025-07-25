@@ -1,5 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { ThemeProvider } from '@mui/material/styles';
 import { NearEarthAsteroidsTable } from '../features/nearEarthAsteroids/components/NearEarthAsteroidsTable';
+import { customTheme } from '../theme';
 import './App.css';
 
 function App() {
@@ -7,10 +11,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <main className='w-full overflow-hidden border'>
-        <h1>Mars On My Mind</h1>
-        <NearEarthAsteroidsTable />
-      </main>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={customTheme}>
+          <main className="w-full overflow-hidden">
+            <h1>Mars On My Mind</h1>
+            <NearEarthAsteroidsTable />
+          </main>
+        </ThemeProvider>
+      </LocalizationProvider>
     </QueryClientProvider>
   );
 }

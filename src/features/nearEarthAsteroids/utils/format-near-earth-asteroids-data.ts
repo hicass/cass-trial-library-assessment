@@ -44,9 +44,8 @@ export const formatNearEarthAsteroidsData = (asteroidsData: AsteroidData[]) => {
         formattedAsteroidsData.push({
           id: asteroid.id,
           name: formatName(asteroid.name),
-          closeApproachDate: dayjs(
-            closeApproach.close_approach_date_full
-          ).format('MMMM D, YYYY h:mm A'),
+          closeApproachDate: dayjs(closeApproach.close_approach_date_full),
+          closeApproachTime: dayjs(closeApproach.close_approach_date_full),
           potentiallyHazardous: formatHazardLvl(
             asteroid.is_potentially_hazardous_asteroid
           ),
