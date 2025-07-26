@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type { AsteroidData } from '../types';
+import type { AsteroidApiResponse, AsteroidData } from '../types';
 
 // Converts a boolean to "Yes" or "No"
 const formatHazardLvl = (boolean: boolean): string => {
@@ -31,7 +31,17 @@ const formatNumberString = (number: string, decimals = 2) => {
  * @param data - Raw data from the NASA API
  * @returns Formatted array for table consumption
  */
-export const formatNearEarthAsteroidsData = (asteroidsData: AsteroidData[]) => {
+export const formatNearEarthAsteroidsData = (
+  asteroidsData: AsteroidApiResponse
+) => {
+  if (
+    !asteroidsData ||
+    typeof asteroidsData !== 'object' ||
+    Object.keys(asteroidsData).length === 0
+  ) {
+    throw new Error('Invalid or empty asteroid data');
+  }
+
   const formattedAsteroidsData = [];
 
   for (const dateKey in asteroidsData) {

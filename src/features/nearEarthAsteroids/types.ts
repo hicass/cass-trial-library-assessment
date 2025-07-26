@@ -1,3 +1,8 @@
+// Represents the asteroid data set returned by the NASA NeoWs API.
+export type AsteroidApiResponse = {
+  [date: string]: AsteroidData[];
+};
+
 // Represents a single asteroid's data from the NASA NeoWs API.
 export type AsteroidData = {
   // Unique asteroid identifier

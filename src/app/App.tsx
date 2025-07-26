@@ -12,8 +12,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <ThemeProvider theme={customTheme}>
-          <main className="w-full overflow-hidden">
+        <ThemeProvider theme={customTheme()}>
+          <main className="w-full flex flex-col items-center overflow-hidden">
             <h1>Mars On My Mind</h1>
             <NearEarthAsteroidsTable />
           </main>

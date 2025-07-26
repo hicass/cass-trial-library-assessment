@@ -1,43 +1,60 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import dayjs, { type Dayjs } from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
-import { formatNearEarthAsteroidsData } from '../utils/format-near-earth-asteroids-data';
 import { useNearEarthAsteroids } from '../utils/useNearEarthAsteroids';
 import { columnStructure, paginationModel } from '../utils/asteroidDataGrid';
-import WeekPicker from './WeekPicker';
+import Button from '@mui/material/Button';
+import Loader from '../../../components/ui/Loader';
+import { DatePicker } from '@mui/x-date-pickers';
 
 // Component to render the Near Earth Asteroid Table
 export const NearEarthAsteroidsTable = () => {
-  const [queryWeek, setQueryWeek] = useState<Dayjs>(
-    dayjs().add(1, 'week').startOf('week')
-  );
+  const [queryDate, setQueryDate] = useState<Dayjs>(dayjs());
 
-  const asteroidsQuery = useNearEarthAsteroids(
-    queryWeek.startOf('week'),
-    queryWeek.endOf('week')
-  );
+  const asteroidsQuery = useNearEarthAsteroids(queryDate);
 
-  const asteroidsData = useMemo(() => {
-    if (!asteroidsQuery.data) return [];
+  if (asteroidsQuery.isLoading) {
+    return <Loader />;
+  }
 
-    return formatNearEarthAsteroidsData(asteroidsQuery.data.near_earth_objects);
-  }, [asteroidsQuery.data]);
+  if (asteroidsQuery.isError) {
+    return (
+      <section className="glass-bg mt-10 w-full flex flex-col items-center gap-6 p-6">
+        <div>
+          <p className="title-sm">Unable to Load Data</p>
+          <p className="mt-2">
+            We couldn't retrieve asteroid data for the selected week.
+            <br />
+            Please check your connection or try again.
+          </p>
+        </div>
 
-  if (asteroidsQuery.isLoading) return <p>Loading...</p>;
-  if (asteroidsQuery.isError) return <p>Error loading asteroid information</p>;
+        <Button onClick={() => asteroidsQuery.refetch()}>Try again</Button>
+      </section>
+    );
+  }
 
   return (
     <section className="mt-10 w-full">
-      <WeekPicker queryWeek={queryWeek} setQueryWeek={setQueryWeek} />
-
-      <DataGrid
-        rows={asteroidsData}
-        columns={columnStructure}
-        getRowId={(row) => row.id}
-        initialState={{ pagination: { paginationModel } }}
-        pageSizeOptions={[10, 20, 40]}
-        sx={{ border: 0 }}
+      <DatePicker
+        label="Pick a date to view the next 7 days"
+        value={queryDate}
+        onChange={(newValue) => {
+          if (newValue) setQueryDate(newValue);
+        }}
+        disablePast
       />
+
+      <div className="glass-bg mt-6">
+        <DataGrid
+          rows={asteroidsQuery.data}
+          columns={columnStructure}
+          getRowId={(row) => row.id}
+          initialState={{ pagination: { paginationModel } }}
+          pageSizeOptions={[10, 20, 40]}
+          disableRowSelectionOnClick
+        />
+      </div>
     </section>
   );
 };
