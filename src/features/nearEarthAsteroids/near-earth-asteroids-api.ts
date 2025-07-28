@@ -1,4 +1,4 @@
-import { handleNasaApiErrors } from '../../utils/handleNASAApiErrors';
+import { handleNasaApiErrors } from '../../utils/handleNasaApiErrors';
 
 const BASE_URL = 'https://api.nasa.gov/neo/rest/v1/feed';
 const NASA_API_KEY = import.meta.env.VITE_API_NASA_KEY;
