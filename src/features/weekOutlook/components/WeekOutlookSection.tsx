@@ -20,7 +20,7 @@ export const WeekOutlookSection = () => {
 
   return (
     <ContentContainer>
-      <section className="flex flex-col gap-12">
+      <section id="week-outlook" className="flex flex-col gap-12 scroll-m-12">
         <header className="flex flex-col lg:flex-row gap-6">
           <div>
             <h2 className="title-md mx-auto">{copyData.title}</h2>
