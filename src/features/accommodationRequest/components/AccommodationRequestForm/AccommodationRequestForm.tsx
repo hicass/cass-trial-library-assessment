@@ -26,7 +26,7 @@ import {
 
 // Component to render an Accommodation Request form
 export const AccommodationRequestForm = () => {
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(true);
   const topRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -67,12 +67,14 @@ export const AccommodationRequestForm = () => {
       <div
         role="status"
         aria-live="polite"
-        className="flex flex-col justify-center items-center mb-4 min-h-[6rem]"
+        className="flex flex-col justify-center items-center min-h-[4rem]"
       >
         {submitted && (
           <>
-            <RocketLaunchIcon />
-            <p className="body-lg-bold mt-2">Thank you!</p>
+            <div className="flex gap-2">
+              <p className="body-lg-bold">Thank you!</p>
+              <RocketLaunchIcon />
+            </div>
             <p className="body-sm mt-1">
               Our team will contact you soon to ensure everything's ready for
               your journey.
@@ -86,7 +88,7 @@ export const AccommodationRequestForm = () => {
           handleSubmit(e, formData, setFormData, setFormErrors, setSubmitted)
         }
         noValidate
-        className="glass-bg p-4 flex flex-col gap-6 items-start"
+        className="glass-bg p-4 border flex flex-col gap-6 items-start"
       >
         {/* Required Name Field */}
         <FormTextField
