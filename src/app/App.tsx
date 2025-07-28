@@ -2,9 +2,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ThemeProvider } from '@mui/material/styles';
-import { NearEarthAsteroidsTable } from '../features/nearEarthAsteroids/components/NearEarthAsteroidsTable';
-import { AccommodationRequestFormSection } from '../features/accommodationRequest/components/AccomodationRequestFormSection';
+import { AccommodationRequestFormSection } from '../features/accommodationRequest/components/AccommodationRequestFormSection';
+import { WeekOutlookSection } from '../features/weekOutlook/components/WeekOutlookSection';
 import { customTheme } from '../theme';
+import './mesh-gradient.css';
 
 function App() {
   const queryClient = new QueryClient();
@@ -13,10 +14,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <ThemeProvider theme={customTheme()}>
-          <main className="w-full flex flex-col items-center gap-20 p-6 overflow-hidden">
-            <h1 className='title-lg'>Mars On My Mind</h1>
+          <main className="h-screen w-screen flex flex-col items-center overflow-y-visible gap-20 p-6 overflow-hidden relative">
+            <h1 className="title-lg">Mars On My Mind</h1>
+            <WeekOutlookSection />
             <AccommodationRequestFormSection />
-            <NearEarthAsteroidsTable />
           </main>
         </ThemeProvider>
       </LocalizationProvider>

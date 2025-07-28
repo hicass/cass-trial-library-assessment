@@ -26,7 +26,7 @@ import {
 
 // Component to render an Accommodation Request form
 export const AccommodationRequestForm = () => {
-  const [submitted, setSubmitted] = useState<boolean>(true);
+  const [submitted, setSubmitted] = useState<boolean>(false);
   const topRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -72,7 +72,7 @@ export const AccommodationRequestForm = () => {
         {submitted && (
           <>
             <div className="flex gap-2">
-              <p className="body-lg-bold">Thank you!</p>
+              <p className="body-lg body-bold">Thank you!</p>
               <RocketLaunchIcon />
             </div>
             <p className="body-sm mt-1">
