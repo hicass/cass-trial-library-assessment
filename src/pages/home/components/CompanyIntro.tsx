@@ -49,13 +49,13 @@ const InfoSection = ({
   const IconComponent = icon;
 
   return (
-    <section id={id}>
+    <div id={id}>
       <div className="flex gap-2">
-        <IconComponent />
+        <IconComponent aria-hidden="true" />
         <h3 className="body-lg body-bold">{title}</h3>
       </div>
       <p className="body-md mt-1">{body}</p>
-    </section>
+    </div>
   );
 };
 
