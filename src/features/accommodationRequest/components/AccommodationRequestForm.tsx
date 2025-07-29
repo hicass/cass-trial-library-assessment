@@ -22,7 +22,7 @@ import {
   handleEmailChange,
   handleMultipleSelect,
   handleSubmit,
-} from '../utils/formHandlers';
+} from '../utils/form-handlers';
 
 // Component to render an Accommodation Request form
 export const AccommodationRequestForm = () => {

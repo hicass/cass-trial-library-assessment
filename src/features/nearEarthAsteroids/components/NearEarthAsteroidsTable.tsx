@@ -1,7 +1,7 @@
 import { type Dayjs } from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNearEarthAsteroids } from '../utils/useNearEarthAsteroids';
-import { columnStructure, paginationModel } from '../utils/asteroidDataGrid';
+import { columnStructure, paginationModel } from '../utils/asteroid-data-grid';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
 
