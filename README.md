@@ -142,6 +142,7 @@ The app features a dark theme with vibrant orange accent colors, inspired by the
 
 - Add the ability to change units of measurement in the Near Earth Asteroids table.
 - Further refine accommodation form validation to make it more comprehensive, robust, and user-friendly.
+- Implement centralized error logging and monitoring for API failures to improve observability and facilitate faster debugging in production environments.
 - Improve accommodation form onChange handlers to eliminate slight input delays experienced with the current implementation.
 - Add validation to prevent excessively long input values in forms by setting maximum character limits.
 - Add a feature allowing users to “book” their travel.
