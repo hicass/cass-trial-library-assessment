@@ -5,18 +5,15 @@ import { columnStructure, paginationModel } from '../utils/asteroidDataGrid';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
 
-export interface WeekOutlookChildProps {
-  queryDate: Dayjs;
-}
-
 const tableStyle = {
   width: '100%',
   minHeight: 629,
 };
 
+// Displays a table of near-Earth asteroids for a given date, with loading, error, and empty states.
 export const NearEarthAsteroidsTable = ({
   queryDate,
-}: WeekOutlookChildProps) => {
+}: {queryDate: Dayjs}) => {
   const asteroidsQuery = useNearEarthAsteroids(queryDate);
   const { isLoading, isError, error, data, refetch } = asteroidsQuery;
 

@@ -1,11 +1,11 @@
+import type { Dayjs } from 'dayjs';
 import Skeleton from '@mui/material/Skeleton';
 import Button from '@mui/material/Button';
 import { useMarsWeather } from '../utils/useMarsWeather';
-import type { WeekOutlookChildProps } from '../../nearEarthAsteroids/components/NearEarthAsteroidsTable';
 import { WeatherCard } from './WeatherCard';
 
 // Displays a 7-day Mars weather forecast with loading, error, and data states.
-export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
+export const WeatherForecast = ({ queryDate }: { queryDate: Dayjs }) => {
   const weatherQuery = useMarsWeather(queryDate);
   const weatherData = weatherQuery.data;
 
