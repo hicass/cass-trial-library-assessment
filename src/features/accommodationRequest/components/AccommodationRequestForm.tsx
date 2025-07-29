@@ -13,16 +13,16 @@ import FormHelperText from '@mui/material/FormHelperText';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import FormControl from '@mui/material/FormControl';
 import { MuiTelInput } from 'mui-tel-input';
-import { type FormErrors, type FormData } from '../../types';
-import { FormTextField } from './FormTextField';
-import { FormSelect } from './FormSelect';
+import { type FormErrors, type FormData } from '../types';
+import { FormTextField } from '../../../components/inputs/FormTextField';
+import { FormSelect } from '../../../components/inputs/FormSelect';
 import {
   handleBlur,
   handleChange,
   handleEmailChange,
   handleMultipleSelect,
   handleSubmit,
-} from '../../utils/formHandlers';
+} from '../utils/formHandlers';
 
 // Component to render an Accommodation Request form
 export const AccommodationRequestForm = () => {

@@ -1,5 +1,5 @@
 import { ContentContainer } from '../../../components/containers/ContentContainer';
-import { AccommodationRequestForm } from './AccommodationRequestForm/AccommodationRequestForm';
+import { AccommodationRequestForm } from './AccommodationRequestForm';
 
 const sectionData = {
   title: 'Need Assistance?',
