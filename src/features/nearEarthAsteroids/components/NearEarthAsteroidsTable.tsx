@@ -1,22 +1,19 @@
 import { type Dayjs } from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNearEarthAsteroids } from '../utils/useNearEarthAsteroids';
-import { columnStructure, paginationModel } from '../utils/asteroidDataGrid';
+import { columnStructure, paginationModel } from '../utils/asteroid-data-grid';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
-
-export interface WeekOutlookChildProps {
-  queryDate: Dayjs;
-}
 
 const tableStyle = {
   width: '100%',
   minHeight: 629,
 };
 
+// Displays a table of near-Earth asteroids for a given date, with loading, error, and empty states.
 export const NearEarthAsteroidsTable = ({
   queryDate,
-}: WeekOutlookChildProps) => {
+}: {queryDate: Dayjs}) => {
   const asteroidsQuery = useNearEarthAsteroids(queryDate);
   const { isLoading, isError, error, data, refetch } = asteroidsQuery;
 
@@ -30,13 +27,21 @@ export const NearEarthAsteroidsTable = ({
     }
 
     if (isError) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'An error occurred';
+
       return (
         <div
           aria-live="polite"
           className="h-full flex-1 flex flex-col items-center justify-center mt-6"
         >
-          <p className="body-md text-center">{error.message}</p>
-          <Button onClick={() => refetch()}>Try again</Button>
+          <p className="body-md text-center">{errorMessage}</p>
+          <Button
+            aria-label="Retry loading asteroids data"
+            onClick={() => refetch()}
+          >
+            Try again
+          </Button>
         </div>
       );
     }
@@ -45,7 +50,7 @@ export const NearEarthAsteroidsTable = ({
       return (
         <div className="glass-bg mt-6">
           <DataGrid
-            rows={data}
+            rows={data ?? []}
             columns={columnStructure}
             getRowId={(row) => row.id}
             sx={tableStyle}

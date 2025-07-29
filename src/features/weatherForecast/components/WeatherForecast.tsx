@@ -1,11 +1,11 @@
+import type { Dayjs } from 'dayjs';
 import Skeleton from '@mui/material/Skeleton';
 import Button from '@mui/material/Button';
 import { useMarsWeather } from '../utils/useMarsWeather';
-import type { WeekOutlookChildProps } from '../../nearEarthAsteroids/components/NearEarthAsteroidsTable';
 import { WeatherCard } from './WeatherCard';
 
 // Displays a 7-day Mars weather forecast with loading, error, and data states.
-export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
+export const WeatherForecast = ({ queryDate }: { queryDate: Dayjs }) => {
   const weatherQuery = useMarsWeather(queryDate);
   const weatherData = weatherQuery.data;
 
@@ -26,7 +26,6 @@ export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
             <Skeleton
               key={i}
               variant="rectangular"
-              // sx={skeletonStyle}
               width={144}
               height={173.5}
             />
@@ -36,15 +35,23 @@ export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
 
       {weatherQuery.isError && (
         <div className="h-full flex-1 flex flex-col items-center justify-center">
-          <p className="body-md text-center" role="alert">
+          <p className="body-md text-center" role="alert" aria-live="assertive">
             {weatherQuery.error.message}
           </p>
           <Button onClick={() => weatherQuery.refetch()}>Try again</Button>
         </div>
       )}
 
+      {weatherQuery.data?.length === 0 && (
+        <div className="h-full flex-1 flex flex-col items-center justify-center">
+          <p className="body-md text-center" role="alert" aria-live="assertive">
+            No weather data available.
+          </p>
+        </div>
+      )}
+
       {weatherQuery.data && (
-        <div className="flex flex-wrap justify-center lg:flex-nowrap gap-4 mt-6">
+        <div className="flex flex-wrap justify-center xl:flex-nowrap gap-4 mt-6">
           {weatherCardElements}
         </div>
       )}

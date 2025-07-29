@@ -8,7 +8,7 @@ const LANDING_DATE = dayjs('2012-08-06');
 function earthDateToSol(date: Dayjs): number {
   const earthDaysSinceLanding = date.diff(LANDING_DATE, 'day', true);
   // 1 sol ≈ 1.02749125 Earth days
-  return Math.floor(earthDaysSinceLanding / 1.02749125);
+  return Math.round(earthDaysSinceLanding / 1.02749125);
 }
 
 // Get Martian season from sol number

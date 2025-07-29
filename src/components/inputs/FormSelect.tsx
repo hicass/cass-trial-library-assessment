@@ -3,7 +3,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import type { FormSelectProps } from '../../types';
+import type { FormSelectProps } from '../../features/accommodationRequest/types';
 
 // Reusable MUI select component with support for single/multi-select,
 // form validation, helper text, and dynamic menu items.

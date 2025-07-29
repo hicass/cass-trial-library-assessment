@@ -13,16 +13,16 @@ import FormHelperText from '@mui/material/FormHelperText';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import FormControl from '@mui/material/FormControl';
 import { MuiTelInput } from 'mui-tel-input';
-import { type FormErrors, type FormData } from '../../types';
-import { FormTextField } from './FormTextField';
-import { FormSelect } from './FormSelect';
+import { type FormErrors, type FormData } from '../types';
+import { FormTextField } from '../../../components/inputs/FormTextField';
+import { FormSelect } from '../../../components/inputs/FormSelect';
 import {
   handleBlur,
   handleChange,
   handleEmailChange,
   handleMultipleSelect,
   handleSubmit,
-} from '../../utils/formHandlers';
+} from '../utils/form-handlers';
 
 // Component to render an Accommodation Request form
 export const AccommodationRequestForm = () => {
@@ -73,7 +73,7 @@ export const AccommodationRequestForm = () => {
           <>
             <div className="flex gap-2">
               <p className="body-lg body-bold">Thank you!</p>
-              <RocketLaunchIcon />
+              <RocketLaunchIcon aria-hidden="true" />
             </div>
             <p className="body-sm mt-1">
               Our team will contact you soon to ensure everything's ready for

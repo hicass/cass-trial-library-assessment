@@ -1,6 +1,6 @@
 import type { ChangeEvent } from 'react';
 import TextField from '@mui/material/TextField';
-import type { FormTextFieldProps } from '../../types';
+import type { FormTextFieldProps } from '../../features/accommodationRequest/types';
 
 // Reusable MUI component for a controlled form input with 
 // validation and custom handlers.

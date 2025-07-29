@@ -21,7 +21,7 @@ export const WeatherCard = memo(
     const handleClose = () => setModalOpen(false);
 
     return (
-      <div className="min-w-[9rem] lg:w-full">
+      <div className="min-w-[9rem] xl:w-full">
         <article className="glass-bg w-full flex flex-col items-center p-4 gap-2">
           <div className="text-center">
             <p className="body-lg body-bold">Sol {sol}</p>

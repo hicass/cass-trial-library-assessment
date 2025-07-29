@@ -139,7 +139,7 @@ const validateFormData = (errors: FormErrors, formData: FormData): boolean => {
     errors.email = 'Required';
     valid = false;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    errors.email = 'Required';
+    errors.email = 'Please enter a valid email address';
     valid = false;
   }
 
