@@ -26,7 +26,6 @@ export const WeatherForecast = ({ queryDate }: { queryDate: Dayjs }) => {
             <Skeleton
               key={i}
               variant="rectangular"
-              // sx={skeletonStyle}
               width={144}
               height={173.5}
             />
@@ -36,10 +35,18 @@ export const WeatherForecast = ({ queryDate }: { queryDate: Dayjs }) => {
 
       {weatherQuery.isError && (
         <div className="h-full flex-1 flex flex-col items-center justify-center">
-          <p className="body-md text-center" role="alert">
+          <p className="body-md text-center" role="alert" aria-live="assertive">
             {weatherQuery.error.message}
           </p>
           <Button onClick={() => weatherQuery.refetch()}>Try again</Button>
+        </div>
+      )}
+
+      {weatherQuery.data?.length === 0 && (
+        <div className="h-full flex-1 flex flex-col items-center justify-center">
+          <p className="body-md text-center" role="alert" aria-live="assertive">
+            No weather data available.
+          </p>
         </div>
       )}
 
