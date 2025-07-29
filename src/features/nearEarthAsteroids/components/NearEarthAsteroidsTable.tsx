@@ -30,13 +30,21 @@ export const NearEarthAsteroidsTable = ({
     }
 
     if (isError) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'An error occurred';
+
       return (
         <div
           aria-live="polite"
           className="h-full flex-1 flex flex-col items-center justify-center mt-6"
         >
-          <p className="body-md text-center">{error.message}</p>
-          <Button onClick={() => refetch()}>Try again</Button>
+          <p className="body-md text-center">{errorMessage}</p>
+          <Button
+            aria-label="Retry loading asteroids data"
+            onClick={() => refetch()}
+          >
+            Try again
+          </Button>
         </div>
       );
     }
@@ -45,7 +53,7 @@ export const NearEarthAsteroidsTable = ({
       return (
         <div className="glass-bg mt-6">
           <DataGrid
-            rows={data}
+            rows={data ?? []}
             columns={columnStructure}
             getRowId={(row) => row.id}
             sx={tableStyle}
