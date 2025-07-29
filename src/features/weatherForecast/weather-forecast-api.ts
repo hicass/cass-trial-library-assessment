@@ -1,5 +1,5 @@
 import type { Dayjs } from 'dayjs';
-import { generateFakeMarsWeather } from './utils/generateFakeMarsWeather';
+import { generateFakeMarsWeather } from './utils/generate-fake-mars-weather';
 
 // Simulates an API call to fetch Mars weather data for a given start date.
 export const fetchMarsWeather = async (startDate: Dayjs) => {
