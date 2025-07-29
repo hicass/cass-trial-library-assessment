@@ -59,6 +59,7 @@ const InfoSection = ({
   );
 };
 
+// Main company introduction section for the homepage
 export const CompanyIntro = () => {
   const infoSectionElements = copyData.sections.map((section) => (
     <InfoSection
