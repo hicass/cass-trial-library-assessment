@@ -5,6 +5,7 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import AirIcon from '@mui/icons-material/Air';
 import SpeedIcon from '@mui/icons-material/Speed';
+import CloseIcon from '@mui/icons-material/Close';
 import type { WeatherModalProps } from '../types';
 
 const modalBoxStyle = {
@@ -99,15 +100,15 @@ export const WeatherModal = ({
       <Fade in={modalOpen}>
         <Box role="dialog" aria-modal="true" sx={modalBoxStyle}>
           <div className="w-full flex flex-col items-center gap-4">
-            <p id="modal-title" className="body-md">
+            <h4 id="modal-title" className="body-md">
               Weather Information
-            </p>
+            </h4>
             <button
               onClick={handleClose}
               aria-label="Close weather details"
               className="absolute text-xl top-2 right-3 text-gray-400 hover:text-white hover:cursor-pointer"
             >
-              ×
+              <CloseIcon />
             </button>
 
             <hr className="h-[0.5px] bg-[#c5c5c5] border-none w-full" />
