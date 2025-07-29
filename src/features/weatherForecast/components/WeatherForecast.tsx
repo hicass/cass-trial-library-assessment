@@ -51,7 +51,7 @@ export const WeatherForecast = ({ queryDate }: { queryDate: Dayjs }) => {
       )}
 
       {weatherQuery.data && (
-        <div className="flex flex-wrap justify-center lg:flex-nowrap gap-4 mt-6">
+        <div className="flex flex-wrap justify-center xl:flex-nowrap gap-4 mt-6">
           {weatherCardElements}
         </div>
       )}
