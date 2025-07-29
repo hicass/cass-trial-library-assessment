@@ -4,12 +4,6 @@ import { useMarsWeather } from '../utils/useMarsWeather';
 import type { WeekOutlookChildProps } from '../../nearEarthAsteroids/components/NearEarthAsteroidsTable';
 import { WeatherCard } from './WeatherCard';
 
-const skeletonStyle = {
-  border: '0.5px solid #43403eac',
-  borderRadius: '8px',
-  p: 2,
-};
-
 // Displays a 7-day Mars weather forecast with loading, error, and data states.
 export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
   const weatherQuery = useMarsWeather(queryDate);
@@ -32,7 +26,7 @@ export const WeatherForecast = ({ queryDate }: WeekOutlookChildProps) => {
             <Skeleton
               key={i}
               variant="rectangular"
-              sx={skeletonStyle}
+              // sx={skeletonStyle}
               width={144}
               height={173.5}
             />
