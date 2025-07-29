@@ -108,7 +108,7 @@ This project was built using the following technologies:
 
 # Approach & Design
 
-The app follows a feature-based architecture inspired by Bulletproof React, designed to support scalability and maintainability as the project grows.
+The app follows a feature-based architecture inspired by [Bulletproof React](https://github.com/alan2207/bulletproof-react/tree/master), designed to support scalability and maintainability as the project grows.
 
 ## Project Structure
 
