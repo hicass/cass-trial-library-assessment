@@ -9,15 +9,8 @@ export interface WeekOutlookChildProps {
   queryDate: Dayjs;
 }
 
-const skeletonStyle = {
-  border: '0.5px solid #43403eac',
-  borderRadius: '8px',
+const tableStyle = {
   width: '100%',
-  minHeight: 629,
-  p: 2,
-};
-
-const dataGridStyle = {
   minHeight: 629,
 };
 
@@ -31,7 +24,7 @@ export const NearEarthAsteroidsTable = ({
     if (isLoading) {
       return (
         <div className="mt-6">
-          <Skeleton variant="rectangular" sx={skeletonStyle} />
+          <Skeleton variant="rectangular" sx={tableStyle} />
         </div>
       );
     }
@@ -55,7 +48,7 @@ export const NearEarthAsteroidsTable = ({
             rows={data}
             columns={columnStructure}
             getRowId={(row) => row.id}
-            sx={dataGridStyle}
+            sx={tableStyle}
             initialState={{ pagination: { paginationModel } }}
             pageSizeOptions={[10, 20, 40]}
             disableRowSelectionOnClick
@@ -79,7 +72,7 @@ export const NearEarthAsteroidsTable = ({
           getRowId={(row) => row.id}
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[10, 20, 40]}
-          sx={dataGridStyle}
+          sx={tableStyle}
           disableRowSelectionOnClick
         />
       </div>

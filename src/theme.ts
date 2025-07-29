@@ -1,5 +1,6 @@
 import { createTheme, type ThemeOptions } from '@mui/material/styles';
-import '@mui/x-data-grid/themeAugmentation';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
+import type {} from '@mui/x-data-grid/themeAugmentation';
 
 export const customTheme = (theme: ThemeOptions = {}) =>
   createTheme({
@@ -7,10 +8,7 @@ export const customTheme = (theme: ThemeOptions = {}) =>
     palette: {
       mode: 'dark',
       primary: {
-        main: '#d8732f',
-      },
-      secondary: {
-        main: '#3f53d2',
+        main: '#cc653f',
       },
     },
     components: {
@@ -22,12 +20,26 @@ export const customTheme = (theme: ThemeOptions = {}) =>
             '& .MuiDataGrid-columnHeaders': {
               backgroundColor: 'transparent',
             },
-            '& .MuiDataGrid-columnHeader': {
-              backgroundColor: 'transparent',
-            },
             '& .MuiDataGrid-cell': {
               backgroundColor: 'transparent',
             },
+          },
+        },
+      },
+      MuiDateCalendar: {
+        styleOverrides: {
+          root: {
+            border: '0.05px solid #433f3e9b',
+            backgroundColor: '#0E0C0C',
+          },
+        },
+      },
+      MuiSkeleton: {
+        styleOverrides: {
+          root: {
+            border: '0.5px solid #43403eac',
+            borderRadius: '8px',
+            p: 2,
           },
         },
       },

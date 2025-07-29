@@ -9,7 +9,6 @@ html {
 :root {
   font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #141414;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,9 +20,7 @@ html {
   width: 100%;
 }
 
-.glass-bg {
-  @apply border-[0.5px] border-[#433f3e9b] bg-[#121010bb] rounded-lg;
-}
+/* Typography Rules */
 
 .title-lg {
   @apply text-5xl font-bold text-[#f2f2f2];
@@ -41,10 +38,6 @@ html {
   @apply text-xl text-[#ededed];
 }
 
-.body-bold {
-  @apply font-bold;
-}
-
 .body-md {
   @apply text-base text-[#ededed];
 }
@@ -53,20 +46,12 @@ html {
   @apply text-sm text-[#ededed];
 }
 
-@keyframes rotate4 {
-  100% {
-    transform: rotate(360deg);
-  }
+.body-bold {
+  @apply font-bold;
 }
 
-@keyframes dash4 {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
+/* Component Styling Rules */
 
-  50% {
-    stroke-dasharray: 90, 200;
-    stroke-dashoffset: -35px;
-  }
+.glass-bg {
+  @apply border-[0.5px] border-[#433f3e9b] bg-[#121010bb] rounded-lg;
 }
