@@ -73,7 +73,7 @@ export const AccommodationRequestForm = () => {
           <>
             <div className="flex gap-2">
               <p className="body-lg body-bold">Thank you!</p>
-              <RocketLaunchIcon />
+              <RocketLaunchIcon aria-hidden="true" />
             </div>
             <p className="body-sm mt-1">
               Our team will contact you soon to ensure everything's ready for
